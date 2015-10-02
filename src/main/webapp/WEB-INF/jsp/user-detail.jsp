@@ -59,7 +59,7 @@
 			<div role="tabpanel" class="tab-pane" id="blog_${blog.id}">
 				<h1>${blog.name}</h1>
 				<p>${blog.url}</p>
-				<a href='<spring:url value="/blog/remove/${blog.id}.html"></spring:url>' class="btn btn-danger">Remove Blog</a>
+				<a href='<spring:url value="/blog/remove/${blog.id}.html"></spring:url>' class="btn btn-danger triggerRemove">Remove Blog</a>
 				<table class="table table-bordered table-hover table-striped">
 					<thead>
 						<tr>
@@ -80,8 +80,34 @@
 		</c:forEach>
 	</div>
 </div>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.nav-tabs a:first').tab('show');
+		
+		$('.triggerRemove').click(function(e) {
+			e.preventDefault();
+			$('.removeBtn').attr('href', $(this).attr('href'));
+			$('#modalRemove').modal();
+		});
 	});
 </script>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Blog</h4>
+      </div>
+      <div class="modal-body">
+       	Are you sure?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       		<a href="#" class="btn btn-small btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
