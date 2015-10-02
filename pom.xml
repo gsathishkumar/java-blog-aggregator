@@ -12,10 +12,17 @@
 		<apache.tiles.version>3.0.3</apache.tiles.version>
 		<slf4j.log4j12.version>1.7.6</slf4j.log4j12.version>
 		<hsqldb.version>2.3.2</hsqldb.version>
+		<jstl.version>1.2</jstl.version>
 		<hibernate-entitymanager.version>4.3.4.Final</hibernate-entitymanager.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>

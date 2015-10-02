@@ -36,7 +36,7 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-						<li><a href="#">About</a></li>
+						<li><a href='<spring:url value="/users.html" />'>Users</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
 				</div>
@@ -46,10 +46,9 @@
 		</nav>
 
 		<tiles:insertAttribute name="body" />
-		<center>
+		<footer>
 			<tiles:insertAttribute name="footer" />
-		</center>
-
+		</footer>
 	</div>
 </body>
 </html>
