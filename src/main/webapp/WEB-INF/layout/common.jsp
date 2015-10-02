@@ -4,7 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
-<
 <tilesx:useAttribute name="current" />
 <!DOCTYPE html>
 <html>
@@ -40,7 +39,7 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="${current == 'index' ? 'active' : '' } "><a
-							href='<spring:url value="/" />'>Home</a></li>
+							href='<spring:url value="/index.html" />'>Home</a></li>
 						<li class="${current == 'users' ? 'active' : '' } "><a
 							href='<spring:url value="/users.html" />'>Users</a></li>
 					</ul>
