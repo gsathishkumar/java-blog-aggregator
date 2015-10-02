@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/layout/taglib.jsp"%>
+<c:if test="${param.success eq true}">
+	<div class="alert alert-success">
+		Registration Successfull!
+	</div>
+</c:if>
 
 <form:form commandName="user" class="form-horizontal">
 	<div class="form-group">
