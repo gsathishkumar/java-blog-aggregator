@@ -1,5 +1,6 @@
 package com.sathish.jba.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -7,13 +8,16 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sathish.jba.entity.Blog;
 import com.sathish.jba.entity.Item;
+import com.sathish.jba.entity.Role;
 import com.sathish.jba.entity.User;
 import com.sathish.jba.repository.BlogRepository;
 import com.sathish.jba.repository.ItemRepository;
+import com.sathish.jba.repository.RoleRepository;
 import com.sathish.jba.repository.UserRepository;
 
 @Service
@@ -28,6 +32,9 @@ public class UserService {
 
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 
 	public List<User> findAll() {
 		return userRepository.findAll();
@@ -51,6 +58,14 @@ public class UserService {
 	}
 
 	public void save(User user) {
+		user.setEnabled(Boolean.TRUE);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+
+		List<Role> roles = new ArrayList<Role>();
+		roles.add(roleRepository.findByName("ROLE_USER"));
+		user.setRoles(roles);
+
 		userRepository.save(user);
 	}
 }

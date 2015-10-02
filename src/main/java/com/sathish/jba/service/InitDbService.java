@@ -48,6 +48,7 @@ public class InitDbService {
 
 		User userAdmin = new User();
 		userAdmin.setName("admin");
+		userAdmin.setEnabled(Boolean.TRUE);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		userAdmin.setPassword(encoder.encode("password"));
 		List<Role> roles = new ArrayList<Role>();
