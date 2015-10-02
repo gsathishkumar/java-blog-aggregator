@@ -1,5 +1,7 @@
 package com.sathish.jba.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,5 +45,11 @@ public class UserController {
 	public String doRegister(@ModelAttribute("user") User user) {
 		userService.save(user);
 		return "redirect:register.html?success=true";
+	}
+	
+	@RequestMapping("/account")
+	public String account(Model model,Principal principal) {
+		model.addAttribute("user", userService.findOneWithBlogs(principal.getName()));
+		return "user-detail";
 	}
 }
